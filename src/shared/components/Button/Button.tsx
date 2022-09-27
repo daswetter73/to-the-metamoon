@@ -1,23 +1,14 @@
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
+import { FC } from 'react';
 
-import { WalletButton } from './Button.styled';
+import { StyledButton, StyledLink } from './Button.styled';
+import { Props } from './types';
 
-const Button = () => {
-  const { address, isConnected } = useAccount();
-  const { connect } = useConnect({
-    connector: new InjectedConnector(),
-  });
-  const { disconnect } = useDisconnect();
-
-  if (isConnected)
-    return (
-      <div>
-        Connected to {address}
-        <WalletButton onClick={() => disconnect()}>Disconnect</WalletButton>
-      </div>
-    );
-  return <WalletButton onClick={() => connect()}>Connect Wallet</WalletButton>;
+const Button: FC<Props> = ({ onClick, href, children }) => {
+  return href ? (
+    <StyledLink href={href}>{children}</StyledLink>
+  ) : (
+    <StyledButton onClick={onClick}>{children}</StyledButton>
+  );
 };
 
 export { Button };

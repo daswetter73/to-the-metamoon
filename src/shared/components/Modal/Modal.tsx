@@ -22,7 +22,7 @@ const Modal: FC<Props> = ({ onClose, children }) => {
 
           <ButtonClose onClick={onClose}>
             <Image
-              src="/icons/icon-cross.svg"
+              src="/icons/cross.svg"
               width={16}
               height={16}
               alt="close modal window icon"

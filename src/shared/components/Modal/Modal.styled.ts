@@ -5,7 +5,8 @@ const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
   z-index: 300;
-  background: ${({ theme }) => theme.colors.black900}99;
+  background: black;
+  opacity: 0.4;
   top: 0;
   left: 0;
   display: flex;
@@ -22,8 +23,7 @@ const StyledModal = styled.section`
   width: 100%;
   height: max-content;
   border-radius: 12px;
-  background: ${({ theme }) => theme.colors.white};
-  box-shadow: ${({ theme }) => `0 12px 36px ${theme.colors.black900}4d`};
+  background: white;
   position: relative;
   z-index: 200;
   align-self: center;
@@ -48,19 +48,6 @@ const ButtonClose = styled.button`
   }
 `;
 
-const ErrorMessage = styled.div`
-  background-color: ${({ theme }) => theme.colors.danger};
-  padding: 16px;
-  text-align: center;
-  font-size: 20px;
-  line-height: 26px;
-  font-weight: 500;
-  margin-bottom: 24px;
-  color: ${({ theme }) => theme.colors.white};
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-`;
-
 const Content = styled.div`
   padding: 40px 60px 60px;
 
@@ -69,4 +56,4 @@ const Content = styled.div`
   }
 `;
 
-export { StyledModal, ModalContainer, ButtonClose, ErrorMessage, Content };
+export { StyledModal, ModalContainer, ButtonClose, Content };

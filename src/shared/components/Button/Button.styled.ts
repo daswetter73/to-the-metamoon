@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-const WalletButton = styled.button`
+const StyledButton = styled.button`
   color: purple;
 `;
-export { WalletButton };
+const StyledLink = styled.a``;
+export { StyledButton, StyledLink };

@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 
-import { Button } from '../shared/components/Button/Button';
+import Home from 'layouts/Home/Home';
 
-const Home: NextPage = () => {
-  return <Button />;
+const HomePage: NextPage = () => {
+  return <Home />;
 };
 
-export default Home;
+export default HomePage;
