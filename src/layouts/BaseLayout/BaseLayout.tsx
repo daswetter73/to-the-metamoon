@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { FC } from 'react';
 
+import { Main, Inner } from './BaseLayout.styled';
 import { Props } from './types';
 
 const BaseLayout: FC<Props> = ({ children }) => {
@@ -9,7 +10,9 @@ const BaseLayout: FC<Props> = ({ children }) => {
       <Head>
         <title>Metamoon</title>
       </Head>
-      <main>{children}</main>
+      <Main>
+        <Inner>{children}</Inner>
+      </Main>
     </>
   );
 };

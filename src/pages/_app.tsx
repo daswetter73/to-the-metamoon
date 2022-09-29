@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import {
   WagmiConfig,
   createClient,
@@ -11,6 +12,13 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
+import fonts from 'styles/fonts.module.css';
+import { GlobalStyle } from 'styles/global';
+import { theme } from 'styles/theme';
+
+const Fonts = createGlobalStyle`
+  ${fonts};
+`;
 const { provider } = configureChains(defaultChains, [
   alchemyProvider({ apiKey: 'yourAlchemyApiKey' }),
   publicProvider(),
@@ -36,9 +44,15 @@ const client = createClient({
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <WagmiConfig client={client}>
-      <Component {...pageProps} />
-    </WagmiConfig>
+    <>
+      <GlobalStyle />
+      <Fonts />
+      <ThemeProvider theme={theme}>
+        <WagmiConfig client={client}>
+          <Component {...pageProps} />
+        </WagmiConfig>
+      </ThemeProvider>
+    </>
   );
 };
 

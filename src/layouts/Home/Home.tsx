@@ -1,32 +1,33 @@
-import { useState, FC, useEffect } from 'react';
-import { useAccount } from 'wagmi';
+import Image from 'next/image';
+import { FC } from 'react';
 
 import BaseLayout from 'layouts/BaseLayout/BaseLayout';
 import { Button } from 'shared/components/Button';
-import ModalWallet from 'shared/components/ModalWallet/ModalWallet';
+import { Header } from 'shared/components/Header';
+import { WalletButton } from 'shared/components/WalletButton';
+
+import { Buttons, Description, Title } from './Home.styled';
 
 const Home: FC = () => {
-  const { address, isConnected } = useAccount();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
-
-  useEffect(() => {
-    setIsWalletConnected(isConnected);
-  }, [isConnected]);
-
-  const handleClick = () => {
-    !isConnected && setIsModalOpen(true);
-  };
-
   return (
-    <>
-      <BaseLayout>
-        <Button onClick={handleClick}>
-          {isWalletConnected ? `Connected to ${address}` : `Connect Wallet`}
-        </Button>
-      </BaseLayout>
-      {isModalOpen && <ModalWallet onClose={() => setIsModalOpen(false)} />}
-    </>
+    <BaseLayout>
+      <Header />
+      <Title>
+        <Image
+          src="/img/to-the-metamoon.svg"
+          alt="to the metamoon"
+          width={544}
+          height={244}
+        />
+      </Title>
+      <Description>
+        From the creators of the first Cardano NFT-marketplace
+      </Description>
+      <Buttons>
+        <WalletButton />
+        <Button href="/mock-address">get whitelisted for airdrop</Button>
+      </Buttons>
+    </BaseLayout>
   );
 };
 
