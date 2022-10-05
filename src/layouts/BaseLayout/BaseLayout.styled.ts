@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-const Main = styled.main`
+const Content = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   background-image: url('/backgrounds/main.svg');
@@ -12,4 +13,4 @@ const Inner = styled.div`
   width: 85%;
 `;
 
-export { Main, Inner };
+export { Content, Inner };

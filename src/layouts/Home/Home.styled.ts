@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+const Main = styled.main`
+  position: relative;
+`;
 const Title = styled.div`
   width: 100%;
   max-width: 544px;
@@ -19,5 +22,11 @@ const Buttons = styled.div`
   grid-template-columns: repeat(2, max-content);
   gap: 20px;
 `;
+const SocialsWrapper = styled.div`
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+`;
 
-export { Title, Description, Buttons };
+export { Title, Description, Buttons, Main, SocialsWrapper };
