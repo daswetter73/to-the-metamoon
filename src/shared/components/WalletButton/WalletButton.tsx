@@ -1,11 +1,12 @@
 import { useState, FC, useEffect } from 'react';
-import { useAccount } from 'wagmi';
+import { useAccount, useDisconnect } from 'wagmi';
 
 import { Button } from 'shared/components/Button';
 import ModalWallet from 'shared/components/ModalWallet/ModalWallet';
 
 const WalletButton: FC = () => {
   const { address, isConnected } = useAccount();
+  const { disconnect } = useDisconnect();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isWalletConnected, setIsWalletConnected] = useState(false);
 
@@ -14,13 +15,22 @@ const WalletButton: FC = () => {
   }, [isConnected]);
 
   const handleClick = () => {
-    !isConnected && setIsModalOpen(true);
+    if (isConnected) {
+      disconnect();
+    } else {
+      setIsModalOpen(true);
+    }
   };
 
   return (
     <>
       <Button onClick={handleClick}>
-        {isWalletConnected ? `Connected to ${address}` : `Connect Wallet`}
+        {isWalletConnected
+          ? `${address?.slice(0, 4)}...${address?.slice(
+              address.length - 4,
+              address.length
+            )}`
+          : `Connect Wallet`}
       </Button>
       {isModalOpen && <ModalWallet onClose={() => setIsModalOpen(false)} />}
     </>
