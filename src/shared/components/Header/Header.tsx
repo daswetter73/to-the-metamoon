@@ -36,7 +36,7 @@ const Header = () => {
         <Links>
           {links.map(({ title, href }) => {
             return (
-              <Link href={href}>
+              <Link href={href} key={href}>
                 <StyledLink>{title}</StyledLink>
               </Link>
             );

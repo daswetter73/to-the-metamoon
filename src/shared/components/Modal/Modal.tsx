@@ -15,22 +15,20 @@ const Modal: FC<Props> = ({ onClose, children }) => {
   };
 
   return (
-    <>
-      <ModalContainer onClick={onClose}>
-        <StyledModal onClick={handleStyledModalClick}>
-          <Content>{children}</Content>
+    <ModalContainer onClick={onClose}>
+      <StyledModal onClick={handleStyledModalClick}>
+        <Content>{children}</Content>
 
-          <ButtonClose onClick={onClose}>
-            <Image
-              src="/icons/cross.svg"
-              width={16}
-              height={16}
-              alt="close modal window icon"
-            />
-          </ButtonClose>
-        </StyledModal>
-      </ModalContainer>
-    </>
+        <ButtonClose onClick={onClose}>
+          <Image
+            src="/icons/cross.svg"
+            width={16}
+            height={16}
+            alt="close modal window icon"
+          />
+        </ButtonClose>
+      </StyledModal>
+    </ModalContainer>
   );
 };
 

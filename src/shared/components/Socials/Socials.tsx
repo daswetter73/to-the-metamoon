@@ -8,7 +8,7 @@ const Socials = () => {
   return (
     <Wrapper>
       {socials.map(({ title, imgSrc, href }) => (
-        <Link href={href} passHref>
+        <Link href={href} passHref key={title}>
           <a>
             <Image src={imgSrc} alt={title} width={40} height={40} />
           </a>

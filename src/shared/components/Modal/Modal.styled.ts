@@ -4,9 +4,8 @@ const ModalContainer = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
-  z-index: 300;
-  background: black;
-  opacity: 0.4;
+  z-index: 199;
+  background: rgba(0, 0, 0, 0.7);
   top: 0;
   left: 0;
   display: flex;
@@ -23,7 +22,7 @@ const StyledModal = styled.section`
   width: 100%;
   height: max-content;
   border-radius: 12px;
-  background: white;
+  background: black;
   position: relative;
   z-index: 200;
   align-self: center;

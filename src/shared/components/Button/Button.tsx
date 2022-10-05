@@ -3,11 +3,20 @@ import { FC } from 'react';
 import { StyledButton, StyledLink } from './Button.styled';
 import { Props } from './types';
 
-const Button: FC<Props> = ({ onClick, href, children }) => {
+const Button: FC<Props> = ({
+  onClick,
+  href,
+  children,
+  isUpperCase = false,
+}) => {
   return href ? (
-    <StyledLink href={href}>{children}</StyledLink>
+    <StyledLink href={href} isUpperCase={isUpperCase}>
+      {children}
+    </StyledLink>
   ) : (
-    <StyledButton onClick={onClick}>{children}</StyledButton>
+    <StyledButton onClick={onClick} isUpperCase={isUpperCase}>
+      {children}
+    </StyledButton>
   );
 };
 
