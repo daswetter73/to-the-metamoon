@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions';
 
 import { WalletButton } from '../WalletButton/WalletButton';
 import {
@@ -9,6 +12,9 @@ import {
   Wrapper,
   StyledLink,
   Nav,
+  BurgerMenu,
+  Line,
+  CloseIcon,
 } from './Header.styles';
 
 const Header = () => {
@@ -18,6 +24,10 @@ const Header = () => {
     { title: 'team', href: '/team' },
     { title: 'community', href: '/community' },
   ];
+
+  const { windowWidth } = useWindowDimensions();
+
+  const [isMobileHeaderOpen, setIsMobileHeaderOpen] = useState(false);
 
   return (
     <Wrapper>
@@ -32,7 +42,24 @@ const Header = () => {
         </Logo>
       </Link>
 
-      <Nav>
+      {windowWidth < 1040 && (
+        <BurgerMenu
+          onClick={() => setIsMobileHeaderOpen(!isMobileHeaderOpen)}
+          isMobileHeaderOpen={isMobileHeaderOpen}
+        >
+          {isMobileHeaderOpen ? (
+            <CloseIcon />
+          ) : (
+            <>
+              <Line />
+              <Line />
+              <Line />
+            </>
+          )}
+        </BurgerMenu>
+      )}
+
+      <Nav windowWidth={windowWidth} isMobileHeaderOpen={isMobileHeaderOpen}>
         <Links>
           {links.map(({ title, href }) => {
             return (

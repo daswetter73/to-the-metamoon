@@ -5,8 +5,12 @@ const Content = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  background-image: url('/backgrounds/main.svg');
   background-size: cover;
+  background: linear-gradient(
+    -45deg,
+    rgba(112, 0, 255, 0.77) 13.35%,
+    rgba(250, 0, 255, 0) 100%
+  );
 `;
 
 const Inner = styled.div`

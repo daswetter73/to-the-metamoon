@@ -5,15 +5,8 @@ import BaseLayout from 'layouts/BaseLayout/BaseLayout';
 import { Button } from 'shared/components/Button';
 import { Header } from 'shared/components/Header';
 import Socials from 'shared/components/Socials/Socials';
-import { WalletButton } from 'shared/components/WalletButton';
 
-import {
-  Buttons,
-  Description,
-  Title,
-  Main,
-  SocialsWrapper,
-} from './Home.styled';
+import { Description, Title, Main, SocialsWrapper } from './Home.styled';
 
 const Home: FC = () => {
   return (
@@ -31,10 +24,9 @@ const Home: FC = () => {
         <Description>
           From the creators of the first Cardano NFT-marketplace
         </Description>
-        <Buttons>
-          <WalletButton />
-          <Button href="/mock-address">get whitelisted for airdrop</Button>
-        </Buttons>
+        <Button href="/mock-address" isUpperCase={true}>
+          get whitelisted for airdrop
+        </Button>
         <SocialsWrapper>
           <Socials />
         </SocialsWrapper>

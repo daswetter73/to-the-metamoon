@@ -12,6 +12,12 @@ const ButtonStyles = (isUpperCase: Props['isUpperCase']) => css`
   outline: none;
   border: none;
   cursor: pointer;
+  @media (max-width: 500px) {
+    font-size: 16px;
+  }
+  @media (max-width: 370px) {
+    font-size: 13px;
+  }
 `;
 const StyledButton = styled.button<{ isUpperCase: Props['isUpperCase'] }>`
   ${({ isUpperCase }) => ButtonStyles(isUpperCase)}
@@ -19,5 +25,7 @@ const StyledButton = styled.button<{ isUpperCase: Props['isUpperCase'] }>`
 const StyledLink = styled.a<{ isUpperCase: Props['isUpperCase'] }>`
   ${({ isUpperCase }) => ButtonStyles(isUpperCase)}
   text-decoration: none;
+  display: block;
+  width: max-content;
 `;
 export { StyledButton, StyledLink };

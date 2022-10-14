@@ -7,6 +7,12 @@ const Title = styled.div`
   width: 100%;
   max-width: 544px;
   margin: 100px 0 30px;
+  @media (max-width: 500px) {
+    margin: 50px 0 30px;
+  }
+  @media (max-height: 800px) {
+    margin: 30px 0 30px;
+  }
 `;
 const Description = styled.div`
   width: 100%;
@@ -17,16 +23,18 @@ const Description = styled.div`
   color: ${({ theme }) => theme.colors.white};
   margin-bottom: 30px;
 `;
-const Buttons = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  gap: 20px;
-`;
 const SocialsWrapper = styled.div`
   position: fixed;
   bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
+  @media (max-height: 800px) {
+    position: static;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: 40px 0;
+  }
 `;
 
-export { Title, Description, Buttons, Main, SocialsWrapper };
+export { Title, Description, Main, SocialsWrapper };

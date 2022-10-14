@@ -9,6 +9,7 @@ import { Props } from './types';
 
 const ModalWallet: FC<Props> = ({ onClose }) => {
   const metaMask = new MetaMaskConnector();
+
   const { connect: metaMaskConnect, isSuccess: isSuccessMetaMask } = useConnect(
     {
       connector: metaMask,
