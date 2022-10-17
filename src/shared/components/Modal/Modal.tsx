@@ -32,4 +32,4 @@ const Modal: FC<Props> = ({ onClose, children }) => {
   );
 };
 
-export { Modal };
+export default Modal;

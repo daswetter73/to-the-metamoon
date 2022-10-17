@@ -1,9 +1,9 @@
 import { useState, FC, useEffect } from 'react';
 import { useAccount, useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
 
-import { Button } from 'shared/components/Button';
 import ModalWallet from 'shared/components/ModalWallet/ModalWallet';
 
+import Button from '../Button/Button';
 import ModalWrongNetwork from '../ModalWrongNetwork/ModalWrongNetwork';
 
 const WalletButton: FC = () => {

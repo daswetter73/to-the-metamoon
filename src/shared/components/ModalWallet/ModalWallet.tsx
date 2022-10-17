@@ -2,8 +2,8 @@ import { FC, useEffect } from 'react';
 import { useConnect } from 'wagmi';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 
-import { Button } from '../Button';
-import { Modal } from '../Modal/Modal';
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 import { Buttons, Title } from './ModalWallet.styled';
 import { Props } from './types';
 

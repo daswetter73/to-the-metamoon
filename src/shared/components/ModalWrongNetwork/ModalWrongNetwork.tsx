@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { Button } from '../Button';
-import { Modal } from '../Modal/Modal';
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 import { Description, Title, ButtonWrapper } from './ModalWrongNetwork.styled';
 import { Props } from './types';
 

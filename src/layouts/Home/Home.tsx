@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { FC } from 'react';
 
 import BaseLayout from 'layouts/BaseLayout/BaseLayout';
-import { Button } from 'shared/components/Button';
-import { Header } from 'shared/components/Header';
+import Button from 'shared/components/Button/Button';
+import Header from 'shared/components/Header/Header';
 import Socials from 'shared/components/Socials/Socials';
 
 import { Description, Title, Main, SocialsWrapper } from './Home.styled';
