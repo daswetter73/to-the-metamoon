@@ -36,5 +36,13 @@ const SocialsWrapper = styled.div`
     margin: 40px 0;
   }
 `;
-
-export { Title, Description, Main, SocialsWrapper };
+const GetWhitelistedButtonWrapper = styled.div`
+  max-width: 350px;
+`;
+export {
+  Title,
+  Description,
+  Main,
+  SocialsWrapper,
+  GetWhitelistedButtonWrapper,
+};

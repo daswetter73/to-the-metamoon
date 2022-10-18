@@ -1,14 +1,23 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import BaseLayout from 'layouts/BaseLayout/BaseLayout';
 import Button from 'shared/components/Button/Button';
 import Header from 'shared/components/Header/Header';
+import { ModalGetWhitelisted } from 'shared/components/ModalGetWhitelisted/ModalGetWhitelisted';
 import Socials from 'shared/components/Socials/Socials';
 
-import { Description, Title, Main, SocialsWrapper } from './Home.styled';
+import {
+  Description,
+  Title,
+  Main,
+  SocialsWrapper,
+  GetWhitelistedButtonWrapper,
+} from './Home.styled';
 
 const Home: FC = () => {
+  const [isModalGetWhitelistedOpen, setIsModalGetWhitelistedOpen] =
+    useState(false);
   return (
     <BaseLayout>
       <Header />
@@ -24,9 +33,21 @@ const Home: FC = () => {
         <Description>
           From the creators of the first Cardano NFT-marketplace
         </Description>
-        <Button href="/mock-address" isUpperCase={true}>
-          get whitelisted for airdrop
-        </Button>
+
+        <GetWhitelistedButtonWrapper>
+          <Button
+            onClick={() => setIsModalGetWhitelistedOpen(true)}
+            isUpperCase={true}
+          >
+            get whitelisted for airdrop
+          </Button>
+        </GetWhitelistedButtonWrapper>
+
+        {isModalGetWhitelistedOpen && (
+          <ModalGetWhitelisted
+            onClose={() => setIsModalGetWhitelistedOpen(false)}
+          />
+        )}
         <SocialsWrapper>
           <Socials />
         </SocialsWrapper>
