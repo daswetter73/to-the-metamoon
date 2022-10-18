@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import { FC } from 'react';
 
-import { Content, Inner } from './BaseLayout.styled';
+import Header from 'shared/components/Header/Header';
+
+import { Content, Inner, Main } from './BaseLayout.styled';
 import { Props } from './types';
 
 const BaseLayout: FC<Props> = ({ children }) => {
@@ -38,7 +40,10 @@ const BaseLayout: FC<Props> = ({ children }) => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Content>
-        <Inner>{children}</Inner>
+        <Inner>
+          <Header />
+          <Main>{children}</Main>
+        </Inner>
       </Content>
     </>
   );

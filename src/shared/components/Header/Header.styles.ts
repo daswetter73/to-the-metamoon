@@ -8,8 +8,11 @@ const Wrapper = styled.header`
 `;
 const Logo = styled.a``;
 const Links = styled.ul`
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
   @media (max-width: 1040px) {
-    display: flex;
     flex-direction: column;
     padding: 0;
   }

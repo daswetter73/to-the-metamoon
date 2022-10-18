@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-
 const Content = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
@@ -12,9 +12,10 @@ const Content = styled.div`
     rgba(250, 0, 255, 0) 100%
   );
 `;
+const Main = styled.main``;
 
 const Inner = styled.div`
   width: 85%;
 `;
 
-export { Content, Inner };
+export { Main, Inner, Content };

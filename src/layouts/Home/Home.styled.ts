@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-const Main = styled.main`
-  position: relative;
-`;
 const Title = styled.div`
   width: 100%;
   max-width: 544px;
@@ -39,10 +36,4 @@ const SocialsWrapper = styled.div`
 const GetWhitelistedButtonWrapper = styled.div`
   max-width: 350px;
 `;
-export {
-  Title,
-  Description,
-  Main,
-  SocialsWrapper,
-  GetWhitelistedButtonWrapper,
-};
+export { Title, Description, SocialsWrapper, GetWhitelistedButtonWrapper };
