@@ -7,6 +7,7 @@ const Button: FC<Props> = ({
   onClick,
   href,
   children,
+  type = 'button',
   isUpperCase = false,
 }) => {
   return href ? (
@@ -14,7 +15,7 @@ const Button: FC<Props> = ({
       {children}
     </StyledLink>
   ) : (
-    <StyledButton onClick={onClick} isUpperCase={isUpperCase}>
+    <StyledButton onClick={onClick} isUpperCase={isUpperCase} type={type}>
       {children}
     </StyledButton>
   );

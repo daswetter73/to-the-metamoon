@@ -10,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-family: Montserrat, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 24px;
+    color: white;
   }
 
   body {

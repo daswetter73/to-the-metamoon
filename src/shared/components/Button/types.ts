@@ -4,6 +4,7 @@ interface Props {
   isUpperCase?: boolean;
   onClick?: () => void;
   href?: string;
+  type?: 'button' | 'submit';
 }
 
 export type { Props };

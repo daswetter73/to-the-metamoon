@@ -12,6 +12,7 @@ const ButtonStyles = (isUpperCase: Props['isUpperCase']) => css`
   outline: none;
   border: none;
   cursor: pointer;
+  width: 100%;
   @media (max-width: 500px) {
     font-size: 16px;
   }
