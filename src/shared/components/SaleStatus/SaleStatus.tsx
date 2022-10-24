@@ -13,7 +13,7 @@ const SaleStatus = () => {
     <Wrapper>
       {sales.map(({ title, status }) => {
         return (
-          <ItemWrapper>
+          <ItemWrapper key={title}>
             <Item>{title}</Item>
             <Status type={status}>{status}</Status>
           </ItemWrapper>
