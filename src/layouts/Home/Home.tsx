@@ -18,7 +18,6 @@ const Home: FC = () => {
     useState(false);
   return (
     <BaseLayout>
-      {/* <Main> */}
       <Title>
         <Image
           src="/img/to-the-metamoon.svg"
@@ -48,7 +47,6 @@ const Home: FC = () => {
       <SocialsWrapper>
         <Socials />
       </SocialsWrapper>
-      {/* </Main> */}
     </BaseLayout>
   );
 };

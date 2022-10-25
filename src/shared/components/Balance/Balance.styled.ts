@@ -16,7 +16,7 @@ const Title = styled.div`
   margin-right: 20px;
 `;
 const Underscore = styled.div`
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white};
   width: 100%;
 `;
 const Amount = styled.div`

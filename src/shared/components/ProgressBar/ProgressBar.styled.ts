@@ -11,7 +11,5 @@ const Wrapper = styled.div<{ currentPercent: number }>`
     }%, #000000 ${currentPercent}%)`};
   border-radius: 20px;
 `;
-const Text = styled.div`
-  /* color: ${({ theme }) => theme.colors.primary}; */
-`;
+const Text = styled.div``;
 export { Wrapper, Text };
