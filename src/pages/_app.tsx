@@ -20,9 +20,10 @@ const Fonts = createGlobalStyle`
   ${fonts};
 `;
 const { provider } = configureChains(defaultChains, [
-  alchemyProvider({ apiKey: 'yourAlchemyApiKey' }),
+  alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_MUMBAI_API_KEY }),
   publicProvider(),
 ]);
+
 const client = createClient({
   autoConnect: true,
   provider,
@@ -36,7 +37,7 @@ const client = createClient({
     new CoinbaseWalletConnector({
       options: {
         appName: 'wagmi.sh',
-        jsonRpcUrl: process.env.NEXT_PUBLIC_GOERLI_RPC_URL,
+        jsonRpcUrl: process.env.NEXT_PUBLIC_MUMBAI_URL,
       },
     }),
   ],
