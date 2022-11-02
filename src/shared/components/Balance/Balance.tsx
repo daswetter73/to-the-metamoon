@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 
 import CoinGescoApi from 'services/api/CoinGescoApi';
 
-import { Amount, Item, Title, Underscore, Wrapper } from './Balance.styled';
+import BalanceItem from '../BalanceItem/BalanceItem';
+import { Wrapper } from './Balance.styled';
 
 const Balance = () => {
   const prices = {
@@ -14,6 +15,7 @@ const Balance = () => {
   };
   const api = new CoinGescoApi();
   const [rate, setRate] = useState(0);
+
   useEffect(() => {
     getRate();
   }, []);
@@ -53,11 +55,7 @@ const Balance = () => {
   return (
     <Wrapper>
       {data.map(({ title, amount, id }) => (
-        <Item key={id}>
-          <Title>{title}</Title>
-          <Underscore />
-          <Amount>{amount}</Amount>
-        </Item>
+        <BalanceItem id={id} title={title} amount={amount} />
       ))}
     </Wrapper>
   );
