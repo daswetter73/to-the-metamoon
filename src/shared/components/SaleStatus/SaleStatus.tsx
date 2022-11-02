@@ -1,21 +1,23 @@
-import { Item, ItemWrapper, Status, Wrapper } from './SaleStatus.styled';
+import { FC } from 'react';
 
-const SaleStatus = () => {
-  const sales: {
-    title: string;
-    status: 'Available now' | 'Soon' | 'Finished';
-  }[] = [
-    { title: 'AirDrop', status: 'Available now' },
-    { title: 'Private Presale', status: 'Available now' },
-    { title: 'Public Sale', status: 'Soon' },
-  ];
+import { status } from './data';
+import { Item, ItemWrapper, Status, Wrapper } from './SaleStatus.styled';
+import { Props } from './types';
+
+const SaleStatus: FC<Props> = ({ data }) => {
   return (
     <Wrapper>
-      {sales.map(({ title, status }) => {
+      {data.map(({ title, statusId: currentStatusId }) => {
+        const statusItem = status.find(({ id: statusId }) => {
+          return currentStatusId === statusId;
+        });
+
         return (
           <ItemWrapper key={title}>
             <Item>{title}</Item>
-            <Status type={status}>{status}</Status>
+            {statusItem && (
+              <Status type={statusItem.title}>{statusItem.title}</Status>
+            )}
           </ItemWrapper>
         );
       })}

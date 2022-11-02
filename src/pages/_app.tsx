@@ -1,11 +1,6 @@
 import type { AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import {
-  WagmiConfig,
-  createClient,
-  configureChains,
-  defaultChains,
-} from 'wagmi';
+import { WagmiConfig, createClient, configureChains, allChains } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
@@ -19,7 +14,7 @@ import { theme } from 'styles/theme';
 const Fonts = createGlobalStyle`
   ${fonts};
 `;
-const { provider } = configureChains(defaultChains, [
+const { provider } = configureChains(allChains, [
   alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_MUMBAI_API_KEY }),
   publicProvider(),
 ]);
