@@ -9,13 +9,19 @@ const Button: FC<Props> = ({
   children,
   type = 'button',
   isUpperCase = false,
+  maxWidth,
 }) => {
   return href ? (
-    <StyledLink href={href} isUpperCase={isUpperCase}>
+    <StyledLink href={href} isUpperCase={isUpperCase} maxWidth={maxWidth}>
       {children}
     </StyledLink>
   ) : (
-    <StyledButton onClick={onClick} isUpperCase={isUpperCase} type={type}>
+    <StyledButton
+      onClick={onClick}
+      isUpperCase={isUpperCase}
+      type={type}
+      maxWidth={maxWidth}
+    >
       {children}
     </StyledButton>
   );
