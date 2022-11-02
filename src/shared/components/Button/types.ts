@@ -5,6 +5,7 @@ interface Props {
   onClick?: () => void;
   href?: string;
   type?: 'button' | 'submit';
+  maxWidth?: string;
 }
 
 export type { Props };
