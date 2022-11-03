@@ -1,55 +1,61 @@
 import { useEffect, useState } from 'react';
-import { useContractReads } from 'wagmi';
 
 import BaseLayout from 'layouts/BaseLayout/BaseLayout';
-import Balance from 'shared/components/Balance/Balance';
+import AirDropContent from 'shared/components/AirDropContent/AirDropContent';
+import PresaleContent from 'shared/components/PresaleContent/PresaleContent';
 import ProgressBar from 'shared/components/ProgressBar/ProgressBar';
+import PublicSaleContent from 'shared/components/PublicSaleContent/PublicSaleContent';
 import SaleStatus from 'shared/components/SaleStatus/SaleStatus';
+import { useSaleStatus } from 'shared/hooks/useSaleStatus';
 
-import {
-  Content,
-  MainContent,
-  ProgressWrapper,
-  Title,
-  Description,
-} from './Profile.styled';
+import { Content, MainContent, ProgressWrapper } from './Profile.styled';
+
 const Profile = () => {
-  const contractDetails = {
-    address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
-    abi: JSON.parse(process.env.NEXT_PUBLIC_ABI),
-    chainId: Number(process.env.NEXT_PUBLIC_CHAIN_ID),
-  };
-  const { data } = useContractReads({
-    contracts: [
-      {
-        functionName: 'airDrop',
-        ...contractDetails,
-      },
-      {
-        functionName: 'publicSale',
-        ...contractDetails,
-      },
-      {
-        functionName: 'whiteListSale',
-        ...contractDetails,
-      },
-    ],
+  const [sidebarItemId, setSidebarItemId] = useState(0);
+  const status = useSaleStatus();
+  const [airDrop, setAirDrop] = useState({
+    title: 'AirDrop',
+    statusId: 0,
+    id: 0,
   });
-  const [status, setStatus] = useState([
-    { title: 'AirDrop', statusId: 0 },
-    { title: 'Private Presale', statusId: 0 },
-    { title: 'Public Sale', statusId: 0 },
-  ]);
+  const [privateSale, setPrivateSale] = useState({
+    title: 'Private Presale',
+    statusId: 0,
+    id: 1,
+  });
+  const [publicSale, setPublicSale] = useState({
+    title: 'Public Sale',
+    statusId: 0,
+    id: 2,
+  });
+
   useEffect(() => {
-    if (Array.isArray(data)) {
-      const [airDropStatus, publicSaleStatus, whiteListSale] = data;
-      setStatus([
-        { title: 'AirDrop', statusId: Number(airDropStatus) },
-        { title: 'Private Presale', statusId: Number(whiteListSale) },
-        { title: 'Public Sale', statusId: Number(publicSaleStatus) },
-      ]);
+    setPublicSale({ ...publicSale, statusId: Number(status?.public) });
+    setAirDrop({ ...airDrop, statusId: Number(status?.airDrop) });
+    setPrivateSale({ ...privateSale, statusId: Number(status?.private) });
+  }, []);
+
+  const items = [airDrop, privateSale, publicSale];
+
+  const handleSideBarClick = (event: any) => {
+    event.preventDefault();
+    if (event.currentTarget !== null) {
+      const currentId = (event.currentTarget as HTMLElement).dataset.id;
+      const clickedStatus = items.find(({ id }) => Number(currentId) === id);
+      setSidebarItemId(clickedStatus?.id || items[0].id);
     }
-  }, [data]);
+  };
+
+  const getContent = () => {
+    switch (sidebarItemId) {
+      case 0:
+        return <AirDropContent />;
+      case 1:
+        return <PresaleContent />;
+      case 2:
+        return <PublicSaleContent />;
+    }
+  };
 
   return (
     <BaseLayout>
@@ -57,15 +63,12 @@ const Profile = () => {
         <ProgressBar currentPercent={27} />
       </ProgressWrapper>
       <Content>
-        <SaleStatus data={status} />
-        <MainContent>
-          <Title>Be an early bird!</Title>
-          <Description>
-            Choose the amount of tokens you want to buy and make a payment in
-            any token.
-          </Description>
-          <Balance />
-        </MainContent>
+        <SaleStatus
+          data={items}
+          onItemClick={handleSideBarClick}
+          currentItemId={sidebarItemId}
+        />
+        <MainContent>{getContent()}</MainContent>
       </Content>
     </BaseLayout>
   );

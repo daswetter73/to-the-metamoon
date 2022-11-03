@@ -21,7 +21,7 @@ class CoinGescoApi {
     const response = await this.request.get(`${this.url}/simple/price`, {
       params: { ids: 'ethereum', vs_currencies: 'usd' },
     });
-    return response.data;
+    return response.data.ethereum.usd;
   }
 }
 export default CoinGescoApi;

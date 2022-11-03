@@ -11,6 +11,7 @@ const Content = styled.div`
     rgba(112, 0, 255, 0.77) 13.35%,
     rgba(250, 0, 255, 0) 100%
   );
+  height: 100%;
 `;
 const Main = styled.main``;
 

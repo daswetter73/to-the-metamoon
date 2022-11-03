@@ -1,0 +1,3 @@
+const COMMON_ERROR = 'COMMON_ERROR';
+
+export { COMMON_ERROR };

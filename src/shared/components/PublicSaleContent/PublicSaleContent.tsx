@@ -8,7 +8,7 @@ import {
 } from './PublicSaleContent.styled';
 
 const PublicSaleContent = () => {
-  const { id, title, amount } = { id: 0, title: 'Public Price', amount: '0' };
+  const { title, amount } = { title: 'Public Price', amount: '0' };
 
   const handleSubscribeClick = () => {};
   return (
@@ -19,7 +19,7 @@ const PublicSaleContent = () => {
         participate
       </Description>
       <BalanceWrapper>
-        <BalanceItem id={id} title={title} amount={amount} />
+        <BalanceItem title={title} amount={amount} />
       </BalanceWrapper>
       <ButtonWrapper>
         <Button

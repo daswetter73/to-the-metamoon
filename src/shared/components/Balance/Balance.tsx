@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import CoinGescoApi from 'services/api/CoinGescoApi';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { getRateFromCoinGesco } from 'store/slices/coinGesco/thunk';
+import { State as CoinGescoState } from 'store/slices/coinGesco/types';
 
 import BalanceItem from '../BalanceItem/BalanceItem';
 import { Wrapper } from './Balance.styled';
@@ -13,12 +15,19 @@ const Balance = () => {
     totalNft: 5,
     totalCost: 0.2,
   };
-  const api = new CoinGescoApi();
   const [rate, setRate] = useState(0);
+  const dispatch = useAppDispatch();
+  const {
+    coinGesco: { ethereumRate },
+  } = useAppSelector((state: { coinGesco: CoinGescoState }) => state);
 
   useEffect(() => {
-    getRate();
+    dispatch(getRateFromCoinGesco());
   }, []);
+
+  useEffect(() => {
+    setRate(ethereumRate);
+  }, [ethereumRate]);
 
   const data = [
     {
@@ -47,15 +56,10 @@ const Balance = () => {
     },
   ];
 
-  async function getRate() {
-    const objectRate = await api.getEthereumRate();
-    setRate(objectRate.ethereum.usd);
-  }
-
   return (
     <Wrapper>
       {data.map(({ title, amount, id }) => (
-        <BalanceItem id={id} title={title} amount={amount} />
+        <BalanceItem title={title} amount={amount} key={id} />
       ))}
     </Wrapper>
   );

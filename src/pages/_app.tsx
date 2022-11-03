@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { WagmiConfig, createClient, configureChains, allChains } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
@@ -7,6 +8,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
+import { store } from 'store/store';
 import fonts from 'styles/fonts.module.css';
 import { GlobalStyle } from 'styles/global';
 import { theme } from 'styles/theme';
@@ -39,8 +41,9 @@ const client = createClient({
 });
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  // const { store } = storeWrapper.useWrappedStore(pageProps);
   return (
-    <>
+    <Provider store={store}>
       <GlobalStyle />
       <Fonts />
       <ThemeProvider theme={theme}>
@@ -48,7 +51,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <Component {...pageProps} />
         </WagmiConfig>
       </ThemeProvider>
-    </>
+    </Provider>
   );
 };
 
