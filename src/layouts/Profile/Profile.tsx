@@ -1,3 +1,4 @@
+import HTMLReactParser from 'html-react-parser';
 import { useEffect, useState } from 'react';
 
 import BaseLayout from 'layouts/BaseLayout/BaseLayout';
@@ -19,12 +20,12 @@ const Profile = () => {
     id: 0,
   });
   const [privateSale, setPrivateSale] = useState({
-    title: 'Private Presale',
+    title: String(HTMLReactParser('Private&nbsp;Presale')),
     statusId: 0,
     id: 1,
   });
   const [publicSale, setPublicSale] = useState({
-    title: 'Public Sale',
+    title: String(HTMLReactParser('Public&nbsp;Sale')),
     statusId: 0,
     id: 2,
   });
@@ -64,7 +65,7 @@ const Profile = () => {
       </ProgressWrapper>
       <Content>
         <SaleStatus
-          data={items}
+          data={[airDrop, privateSale, publicSale]}
           onItemClick={handleSideBarClick}
           currentItemId={sidebarItemId}
         />

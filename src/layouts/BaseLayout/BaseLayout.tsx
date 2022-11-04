@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 import Header from 'shared/components/Header/Header';
 
-import { Content, Inner, Main } from './BaseLayout.styled';
+import { Content, Inner } from './BaseLayout.styled';
 import { Props } from './types';
 
 const BaseLayout: FC<Props> = ({ children }) => {
@@ -42,7 +42,7 @@ const BaseLayout: FC<Props> = ({ children }) => {
       <Content>
         <Inner>
           <Header />
-          <Main>{children}</Main>
+          <div>{children}</div>
         </Inner>
       </Content>
     </>

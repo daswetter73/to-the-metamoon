@@ -8,6 +8,11 @@ const Content = styled.div`
   display: flex;
   gap: 50px;
   min-width: 500px;
+  @media (max-width: 1260px) {
+    margin-top: 70px;
+    flex-direction: column;
+    min-width: auto;
+  }
 `;
 const MainContent = styled.div``;
 export { ProgressWrapper, Content, MainContent };

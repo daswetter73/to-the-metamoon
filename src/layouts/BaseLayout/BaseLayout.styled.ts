@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const Content = styled.div`
+const Content = styled.main`
   position: relative;
   width: 100%;
   height: 100%;
@@ -12,11 +12,11 @@ const Content = styled.div`
     rgba(250, 0, 255, 0) 100%
   );
   height: 100%;
+  padding-bottom: 50px;
 `;
-const Main = styled.main``;
 
 const Inner = styled.div`
   width: 85%;
 `;
 
-export { Main, Inner, Content };
+export { Inner, Content };

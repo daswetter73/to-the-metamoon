@@ -1,5 +1,10 @@
 import Button from '../Button/Button';
-import { Description, Title, Wrapper } from './AirDropContent.styled';
+import {
+  Description,
+  Title,
+  Wrapper,
+  ButtonWrapper,
+} from './AirDropContent.styled';
 
 const AirDropContent = () => {
   const isWhitelisted = false;
@@ -19,14 +24,16 @@ const AirDropContent = () => {
 
   const notWhitelisted = (
     <Wrapper>
-      <Title>You’re not whitelisted yet :(</Title>
+      <Title>You’re not whitelisted yet :&nbsp;(</Title>
       <Description>
         To participate in AirDrop please send us an information about your
         project
       </Description>
-      <Button isUpperCase={true} onClick={handleClaimClick} maxWidth="250px">
-        get whitelisted
-      </Button>
+      <ButtonWrapper>
+        <Button isUpperCase={true} onClick={handleClaimClick} maxWidth="250px">
+          get whitelisted
+        </Button>
+      </ButtonWrapper>
     </Wrapper>
   );
 
