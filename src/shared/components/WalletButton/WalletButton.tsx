@@ -1,10 +1,17 @@
-import { useState, FC, useEffect } from 'react';
+import Link from 'next/link';
+import { useState, FC, useEffect, useRef } from 'react';
 import { useAccount, useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
 
 import ModalWallet from 'shared/components/ModalWallet/ModalWallet';
 
 import Button from '../Button/Button';
 import ModalWrongNetwork from '../ModalWrongNetwork/ModalWrongNetwork';
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownLink,
+  Wrapper,
+} from './WalletButton.styled';
 
 const WalletButton: FC = () => {
   const { address, isConnected } = useAccount();
@@ -15,6 +22,9 @@ const WalletButton: FC = () => {
   const [isModalWalletOpen, setIsModalWalletOpen] = useState(false);
   const [isModalWrongNetworkOpen, setIsModalWrongNetworkOpen] = useState(false);
   const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const wrapper = useRef(null);
 
   useEffect(() => {
     setIsWalletConnected(isConnected);
@@ -29,9 +39,9 @@ const WalletButton: FC = () => {
     }
   }, [chain]);
 
-  const handleClick = () => {
+  const handleMainButtonClick = () => {
     if (isConnected) {
-      disconnect();
+      setIsDropdownOpen(true);
     } else {
       setIsModalWrongNetworkOpen(false);
       setIsModalWalletOpen(true);
@@ -44,9 +54,19 @@ const WalletButton: FC = () => {
     }
   };
 
+  const handleDisconnectClick = () => {
+    disconnect();
+  };
+
+  const handleWrapperBlur = () => {
+    setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 200);
+  };
+
   return (
-    <>
-      <Button onClick={handleClick} isUpperCase={true}>
+    <Wrapper onBlur={handleWrapperBlur} tabIndex={0} ref={wrapper}>
+      <Button onClick={handleMainButtonClick} isUpperCase={true}>
         {isWalletConnected
           ? `${address?.slice(0, 4)}...${address?.slice(
               address.length - 4,
@@ -54,6 +74,16 @@ const WalletButton: FC = () => {
             )}`
           : `Connect Wallet`}
       </Button>
+      {isDropdownOpen && isWalletConnected && (
+        <Dropdown>
+          <DropdownItem onClick={handleDisconnectClick}>
+            Disconnect
+          </DropdownItem>
+          <Link href={'/profile'} passHref>
+            <DropdownLink>My NFT</DropdownLink>
+          </Link>
+        </Dropdown>
+      )}
       {isModalWalletOpen && (
         <ModalWallet onClose={() => setIsModalWalletOpen(false)} />
       )}
@@ -63,7 +93,7 @@ const WalletButton: FC = () => {
           onButtonClick={handleSwitchNetworkClick}
         />
       )}
-    </>
+    </Wrapper>
   );
 };
 
