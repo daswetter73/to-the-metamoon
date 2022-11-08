@@ -3,13 +3,20 @@ import { useEffect, useState } from 'react';
 
 import BaseLayout from 'layouts/BaseLayout/BaseLayout';
 import AirDropContent from 'shared/components/AirDropContent/AirDropContent';
+import Button from 'shared/components/Button/Button';
+import ModalUniswap from 'shared/components/ModalUniswap/ModalUniswap';
 import PresaleContent from 'shared/components/PresaleContent/PresaleContent';
 import ProgressBar from 'shared/components/ProgressBar/ProgressBar';
 import PublicSaleContent from 'shared/components/PublicSaleContent/PublicSaleContent';
 import SaleStatus from 'shared/components/SaleStatus/SaleStatus';
 import { useSaleStatus } from 'shared/hooks/useSaleStatus';
 
-import { Content, MainContent, ProgressWrapper } from './Profile.styled';
+import {
+  Content,
+  MainContent,
+  ProgressWrapper,
+  UniswapButton,
+} from './Profile.styled';
 
 const Profile = () => {
   const [sidebarItemId, setSidebarItemId] = useState(0);
@@ -29,6 +36,7 @@ const Profile = () => {
     statusId: 0,
     id: 2,
   });
+  const [isUniswapModalOpen, setIsUniswapModalOpen] = useState(false);
 
   useEffect(() => {
     setPublicSale({ ...publicSale, statusId: Number(status?.public) });
@@ -64,11 +72,25 @@ const Profile = () => {
         <ProgressBar currentPercent={27} />
       </ProgressWrapper>
       <Content>
-        <SaleStatus
-          data={[airDrop, privateSale, publicSale]}
-          onItemClick={handleSideBarClick}
-          currentItemId={sidebarItemId}
-        />
+        <div>
+          <SaleStatus
+            data={[airDrop, privateSale, publicSale]}
+            onItemClick={handleSideBarClick}
+            currentItemId={sidebarItemId}
+          />
+          <UniswapButton>
+            <Button
+              isUpperCase={true}
+              onClick={() => setIsUniswapModalOpen(true)}
+              maxWidth="250px"
+            >
+              Uniswap
+            </Button>
+            {isUniswapModalOpen && (
+              <ModalUniswap onClose={() => setIsUniswapModalOpen(false)} />
+            )}
+          </UniswapButton>
+        </div>
         <MainContent>{getContent()}</MainContent>
       </Content>
     </BaseLayout>
