@@ -1,3 +1,5 @@
+import { usePublicPrice } from 'shared/hooks/usePublicPrice';
+
 import BalanceItem from '../BalanceItem/BalanceItem';
 import Button from '../Button/Button';
 import {
@@ -8,7 +10,8 @@ import {
 } from './PublicSaleContent.styled';
 
 const PublicSaleContent = () => {
-  const { title, amount } = { title: 'Public Price', amount: '0' };
+  const amount = usePublicPrice();
+  const title = 'Public Price';
 
   const handleSubscribeClick = () => {};
   return (
@@ -19,7 +22,7 @@ const PublicSaleContent = () => {
         participate
       </Description>
       <BalanceWrapper>
-        <BalanceItem title={title} amount={amount} />
+        <BalanceItem title={title} amount={String(amount)} />
       </BalanceWrapper>
       <ButtonWrapper>
         <Button
