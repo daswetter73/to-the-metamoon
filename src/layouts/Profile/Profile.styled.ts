@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const ProgressWrapper = styled.div`
   margin-top: 100px;
 `;
+
 const Content = styled.div`
   margin-top: 200px;
   display: flex;
@@ -14,5 +15,11 @@ const Content = styled.div`
     min-width: auto;
   }
 `;
+
+const UniswapButton = styled.div`
+  margin-top: 30px;
+`;
+
 const MainContent = styled.div``;
-export { ProgressWrapper, Content, MainContent };
+
+export { ProgressWrapper, Content, MainContent, UniswapButton };
