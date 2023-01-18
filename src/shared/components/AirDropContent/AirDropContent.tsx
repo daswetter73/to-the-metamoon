@@ -5,38 +5,24 @@ import {
   Wrapper,
   ButtonWrapper,
 } from './AirDropContent.styled';
+import { notWhitelistedText, whitelistedText } from './data';
 
 const AirDropContent = () => {
-  const isWhitelisted = false;
+  const isWhitelisted = true;
+  const text = isWhitelisted ? whitelistedText : notWhitelistedText;
 
   const handleClaimClick = () => {};
-  const whitelisted = (
-    <Wrapper>
-      <Title>Congratulations!</Title>
-      <Description>
-        Your wallet has been whitelisted! Claim your NFT now!
-      </Description>
-      <Button isUpperCase={true} onClick={handleClaimClick} maxWidth="150px">
-        claim nft
-      </Button>
-    </Wrapper>
-  );
 
-  const notWhitelisted = (
+  return (
     <Wrapper>
-      <Title>You’re not whitelisted yet :&nbsp;(</Title>
-      <Description>
-        To participate in AirDrop please send us an information about your
-        project
-      </Description>
+      <Title>{text.title}</Title>
+      <Description>{text.description}</Description>
       <ButtonWrapper>
         <Button isUpperCase={true} onClick={handleClaimClick} maxWidth="250px">
-          get whitelisted
+          {text.buttonTitle}
         </Button>
       </ButtonWrapper>
     </Wrapper>
   );
-
-  return isWhitelisted ? whitelisted : notWhitelisted;
 };
 export default AirDropContent;

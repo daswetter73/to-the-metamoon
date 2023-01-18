@@ -9,6 +9,7 @@ const Item = styled.div`
     align-items: center;
   }
 `;
+
 const Title = styled.div`
   width: 100%;
   max-width: max-content;
@@ -18,6 +19,7 @@ const Title = styled.div`
     margin-right: 0;
   }
 `;
+
 const Underscore = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.white};
   width: 100%;
@@ -26,6 +28,7 @@ const Underscore = styled.div`
     display: none;
   }
 `;
+
 const Amount = styled.div`
   width: 100%;
   min-width: 200px;
@@ -39,4 +42,5 @@ const Amount = styled.div`
     margin-left: 0;
   }
 `;
+
 export { Item, Title, Underscore, Amount };

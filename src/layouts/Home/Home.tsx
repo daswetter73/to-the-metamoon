@@ -16,6 +16,7 @@ import {
 const Home: FC = () => {
   const [isModalGetWhitelistedOpen, setIsModalGetWhitelistedOpen] =
     useState(false);
+
   return (
     <BaseLayout>
       <Title>

@@ -41,7 +41,6 @@ const client = createClient({
 });
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  // const { store } = storeWrapper.useWrappedStore(pageProps);
   return (
     <Provider store={store}>
       <GlobalStyle />
